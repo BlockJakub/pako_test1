@@ -1,0 +1,69 @@
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 62.5%;
+}
+
+/* Apply box-sizing rule */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.grid_text_reading {
+    margin: 5rem auto;
+    width: min(90%, 75rem);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Fixed bug: use repeat for equal columns */
+}
+
+.parent {
+    display: grid;
+    width: min(100%, 75rem);
+    grid-auto-flow: row; /* Fixed bug: use row instead of column wrap */
+    row-gap: .2rem;
+    background-image: linear-gradient(rgba(144, 134, 122, .8) 17%, rgba(122, 122, 122, .7) 77%);
+    padding: 2rem;
+}
+.child {
+    color: greenyellow;
+    font-size: 1rem;
+    font-weight: 400;
+    width: min(100%, 75rem);
+    border-radius: 5px;
+    background-image: linear-gradient(45deg, rgba(233, 12, 22, .7), rgba(12, 22, 122, .4));
+    display: grid; /* Fixed bug: add display grid to center items */
+    justify-items: center;
+    align-items: center;
+    transition: all .8s;
+    padding: 1rem; /* Add padding to the child element */
+}
+.child > p {
+    margin: 1rem;
+}
+.child a {
+    color: lightblue; /* Style the link color */
+    text-decoration: none; /* Remove underline */
+    margin-top: 1rem; /* Add margin to the top of the link */
+    display: inline-block; /* Ensure margin is applied */
+}
+.child a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+.child:hover {
+    background-color: rgba(233, 12, 22, .9); /* Add hover effect */
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .grid_text_reading {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+    .child {
+        font-size: 0.875rem; /* Adjust font size for smaller screens */
+    }
+}
